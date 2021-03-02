@@ -1,0 +1,8 @@
+driver_version Driver 10
+name Name 25
+pci.bus_id ID 15
+utilization.gpu[%] GPU-Util. 12
+utilization.memory[%] Mem.-Util. 12
+memory.used[MiB] Mem(Used) 10
+memory.total[MiB] Mem(Tot.) 10
+temperature.gpu Temp. 5
