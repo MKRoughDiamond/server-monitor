@@ -23,7 +23,6 @@ class ServerMonitor(BaseHTTPRequestHandler):
         self.send_header('Access-Control-Allow-Origin','*')
         self.end_headers()
         self.wfile.write(bytes(json.dumps({'content':'Your request is invalid, so your IP is blocked. Please talk to administrator.'}),'utf-8'))
-        self._add_blacklist()
 
 
     def _add_blacklist(self):
@@ -43,6 +42,7 @@ class ServerMonitor(BaseHTTPRequestHandler):
             out = (subprocess.check_output(inst)).decode('utf-8')
         except Exception:
             self._set_headers_failed()
+            self._add_blacklist()
             return
         self._set_headers_success()
         response = {
