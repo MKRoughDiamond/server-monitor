@@ -29,14 +29,14 @@ def get_server_gpu_status(ip, port):
         print(err)
         return None
 
-def print_status(ip, port):
+def print_status(ip, port,name):
     try:
         results = get_server_gpu_status(ip,port)
         keys = list(map(lambda x : list(x.keys())[0],results[0]))
     except Exception:
-        print('Failed to connect to {}:{}'.format(ip,port))
+        print('Failed to connect to {}:{}, {}'.format(ip,port,name))
         return
-    print('Status of {}:{}'.format(ip, port))
+    print('Status of {}:{}, {}'.format(ip, port, name))
     for key in keys:
         print(key.ljust(PAD_DICT[key]),end='')
     print()
@@ -54,7 +54,7 @@ def print_status(ip, port):
 ###        Utility (Such as 'watch', 'list', 'ip/port', 'process' etc.
 
 if __name__=='__main__':
-    with open(os.path.join(dir_,'../token'),'r') as f:
+    with open(os.path.join(dir_,'token'),'r') as f:
         for line in f:
             TOKEN = line[:-1]
             break
@@ -67,5 +67,7 @@ if __name__=='__main__':
 
     with open(os.path.join(dir_,'servers.list'),'r') as f:
         for line in f:
-            ip, port = line.replace('\n','').split(':')
-            print_status(ip,port)
+            l = line.replace('\n','').split(' ')
+            ip, port = l[0].split(':')
+            name = l[1]
+            print_status(ip,port,name)

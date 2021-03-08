@@ -1,0 +1,86 @@
+.title{
+    width: 70%;
+    height: 50px;
+    background-color: #dddddd;
+    margin: auto;
+}
+
+.title-n{
+    height: 100%;
+    width: 60%;
+    float: left;
+}
+
+.title-input-div{
+    height: 25px;
+    width: 40%;
+    float: right;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+#input-password{
+    width: 50%;
+    margin: 1%;
+}
+
+h3{
+    font-size: 2em;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 1%;
+}
+
+.footer{
+    width: 70%;
+    background-color: #dddddd;
+    margin: auto;
+}
+
+.footer-p{
+    font-size: 1em;
+    padding: 1%;
+}
+
+.connectors-div{
+    width: 70%;
+    margin: auto;
+}
+
+.connector{
+    width: 48%;
+    background-color: #dddddd;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    margin-bottom: 0.5%;
+    margin-top: 0.5%;
+    padding: 0.5%;
+    border-radius: 10px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.key{
+    width: 30%;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.value{
+    width: 30%;
+    display: inline-block;
+}
+
+.gpu{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1%;
+    margin: 0.5%;
+    margin-bottom: 0;
+}
+
+.server-name{
+    font-size: 1.25em;
+    font-weight: bold;
+    margin: 0;
+}

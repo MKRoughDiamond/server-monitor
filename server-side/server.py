@@ -65,7 +65,7 @@ if __name__ == '__main__':
     parser.add_argument('--port', type=int, default=None)
     args = parser.parse_args()
 
-    with open(os.path.join(dir_,'../token'),'r') as f:
+    with open(os.path.join(dir_,'token'),'r') as f:
         for line in f:
             TOKEN = line[:-1]
             break
