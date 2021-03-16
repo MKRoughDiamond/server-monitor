@@ -38,17 +38,31 @@ class ServerMonitor(BaseHTTPRequestHandler):
             dic = json.loads(contents)
             if self.client_address[0] in BLACK_LIST or dic['token']!=TOKEN or len(list(dic.keys())) != 1:
                 raise Exception
-            inst = ['nvidia-smi','--query-gpu='+','.join(QUERY_LIST),'--format=csv']
-            out = (subprocess.check_output(inst)).decode('utf-8')
+
+            # GPU STATUS
+            inst_gpu = ['nvidia-smi','--query-gpu='+','.join(QUERY_LIST),'--format=csv']
+            out_gpu = (subprocess.check_output(inst_gpu)).decode('latin-1')
+
+            # CPU STATUS
+            inst_cpu = ['mpstat','-P','ALL','1','1']
+            out_cpu = (subprocess.check_output(inst_cpu)).decode('latin-1')
+
+            # MEMORY STATUS
+            inst_mem = ['free','-m']
+            out_mem = (subprocess.check_output(inst_mem)).decode('latin-1')
         except Exception:
             self._set_headers_failed()
             self._add_blacklist()
             return
         self._set_headers_success()
         response = {
-            'content': out
+            'content': {
+            'GPU' : out_gpu,
+            'CPU' : out_cpu,
+            'MEMORY' : out_mem
+            }
         }
-        self.wfile.write(bytes(json.dumps(response),'utf-8'))
+        self.wfile.write(bytes(json.dumps(response),'latin-1'))
     
 
     def do_OPTIONS(self):

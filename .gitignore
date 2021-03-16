@@ -1,5 +1,6 @@
 token
 *.list
+*.tar
 
 # from frontend
 node_modules
